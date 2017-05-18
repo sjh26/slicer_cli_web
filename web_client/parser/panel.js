@@ -7,9 +7,21 @@ import group from './group';
  */
 function panel(panelTag) {
     var $panel = $(panelTag);
+    var groups = _.filter(
+        _.map($panel.find('parameters > label'), group),
+        _.isObject
+    );
+
+    if (!groups.length) {
+        return null;
+    }
+
     return {
         advanced: $panel.attr('advanced') === 'true',
-        groups: _.map($panel.find('parameters > label'), group)
+        groups: _.filter(
+            _.map($panel.find('parameters > label'), group),
+            _.isObject
+        )
     };
 }
 

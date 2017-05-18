@@ -24,6 +24,8 @@ function param(paramTag) {
 
     if ((type === 'file' || type === 'image') && channel === 'output') {
         type = 'new-file';
+    } else if (channel === 'output') {
+        return null;
     }
 
     if (!type) {

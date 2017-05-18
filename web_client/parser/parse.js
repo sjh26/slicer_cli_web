@@ -45,7 +45,11 @@ function parse(spec) {
         }
     );
 
-    gui.panels = _.map($spec.find('executable > parameters'), panel);
+    gui.panels = _.filter(
+        _.map($spec.find('executable > parameters'), panel),
+        _.isObject
+    );
+
     return gui;
 }
 

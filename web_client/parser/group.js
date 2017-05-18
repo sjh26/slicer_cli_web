@@ -9,12 +9,21 @@ import param from './param';
 function group(label) {
     // parameter groups inside panels
     var $label = $(label),
-        $description = $label.next('description');
+        $description = $label.next('description'),
+        parameters = _.filter(
+            _.map($description.nextUntil('label'), param),
+            _.isObject
+        );
+
+    // don't add the panel if there are no input parameters
+    if (!parameters.length) {
+        return null;
+    }
 
     return {
         label: $label.text(),
         description: $description.text(),
-        parameters: _.map($description.nextUntil('label'), param)
+        parameters
     };
 }
 
