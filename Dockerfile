@@ -56,8 +56,10 @@ RUN cd $BUILD_PATH && git clone --depth 1 -b ${ITK_GIT_TAG} git://itk.org/ITK.gi
         -DBUILD_SHARED_LIBS:BOOL=ON \
         -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON \
         -DITK_LEGACY_REMOVE:BOOL=ON \
-        -DITK_BUILD_DEFAULT_MODULES:BOOL=OFF \
-        -DITK_USE_SYSTEM_LIBRARIES:BOOL=OFF \
+        -DITK_BUILD_DEFAULT_MODULES:BOOL=ON \
+        -DITK_USE_SYSTEM_LIBRARIES:BOOL=ON \
+        -DModule_ITKIOImageBase:BOOL=ON \
+        -DModule_ITKSmoothing:BOOL=ON \
         -DModule_ITKCommon:BOOL=ON \
         -DModule_ITKIOXML:BOOL=ON \
         -DModule_ITKExpat:BOOL=ON \
