@@ -7,6 +7,9 @@ RUN apt-get update && \
     build-essential \
     wget \
     git \
+    libpng-dev \
+    zlib1g-dev \
+    libqt4-dev \
     emacs vim \
     make cmake cmake-curses-gui \
     ninja-build && \
@@ -57,7 +60,7 @@ RUN cd $BUILD_PATH && git clone --depth 1 -b ${ITK_GIT_TAG} git://itk.org/ITK.gi
         -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON \
         -DITK_LEGACY_REMOVE:BOOL=ON \
         -DITK_BUILD_DEFAULT_MODULES:BOOL=ON \
-        -DITK_USE_SYSTEM_LIBRARIES:BOOL=ON \
+        -DITK_USE_SYSTEM_LIBRARIES:BOOL=OFF \
         -DModule_ITKIOImageBase:BOOL=ON \
         -DModule_ITKSmoothing:BOOL=ON \
         -DModule_ITKCommon:BOOL=ON \
